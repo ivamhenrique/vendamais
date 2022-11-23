@@ -3,8 +3,7 @@ package software.henrik.vendamais.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.text.DecimalFormat
-import java.util.*
+import software.henrik.vendamais.util.FormatNumber
 
 class MainViewModel : ViewModel() {
 
@@ -12,11 +11,6 @@ class MainViewModel : ViewModel() {
     val total: LiveData<String> get() = _total
 
     init {
-        _total.value = formatForBrazilianCurrency(10023.21F)
-    }
-
-    private fun formatForBrazilianCurrency(value: Float): String {
-        val brazilianFormat = DecimalFormat.getCurrencyInstance(Locale("pt", "br"))
-        return brazilianFormat.format(value)
+        _total.value = FormatNumber.forBrazilianCurrency(10023.21F)
     }
 }
